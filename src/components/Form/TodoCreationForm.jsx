@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import styles from "./TodoCreationForm.module.css";
 
 const TodoCreationForm = () => {
   const [description, setDescription] = useState("");
@@ -8,9 +9,7 @@ const TodoCreationForm = () => {
     setDescription(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     try {
       const response = await axios.post("http://localhost:5000/todos", {
         description,

@@ -1,0 +1,34 @@
+.cardContainer {
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "leftPanel buttonsPanel";
+  padding: 1% 1%;
+}
+
+.leftPanel {
+  justify-self: start;
+  grid-area: leftPanel;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  grid-template-areas: "checkboxInput descriptionSpan";
+  padding-left: 3%;
+}
+
+.buttonsPanel {
+  justify-self: end;
+  grid-area: buttonsPanel;
+  display: grid;
+  grid-template-columns: 50px 10px 50px;
+  padding-right: 5%;
+}
+
+.checkboxInput {
+  justify-self: start;
+  grid-area: checkboxInput;
+}
+
+.descriptionSpan {
+  justify-self: start;
+  grid-area: descriptionSpan;
+}

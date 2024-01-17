@@ -1,7 +1,21 @@
-import React from "react";
+import { useContext } from "react";
+import styles from "./SortTodos.module.css";
+import { TodoContext } from "../../../context/TodoContext";
 
 const SortTodos = () => {
-  return <div></div>;
+  const { toggleSorter } = useContext(TodoContext);
+
+  return (
+    <section className={styles.sortButton} >
+      <input
+        type="submit"
+        name="sortTodo"
+        value="Tasks"
+        onClick={toggleSorter}
+        className={styles.sortInput}
+      />
+    </section>
+  );
 };
 
 export default SortTodos;

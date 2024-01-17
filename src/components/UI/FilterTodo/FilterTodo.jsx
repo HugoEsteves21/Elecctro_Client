@@ -1,21 +1,12 @@
-import { useState } from "react";
-import axios from "axios";
+import { useContext } from "react";
 import styles from "./FilterTodo.module.css";
+import { TodoContext } from "../../../context/TodoContext";
 
 const FilterToDo = () => {
-  const [hideCompleted, setHideCompleted] = useState(false);
-
-  const toggleFilter = () => {
-    setHideCompleted((prevState) => !prevState);
-  };
-
-  /* Add filter and order funtions to the context.
-And instead of having 3 getList calls we will have a method
-that makes one of the calls depending on a specific variable that will say
-if we want the whole list or just the filtered one  */
+  const { toggleFilter } = useContext(TodoContext);
 
   return (
-    <section>
+    <section className={styles.filterCheckbox}>
       <span>
         <b>Hide Completed</b>
       </span>

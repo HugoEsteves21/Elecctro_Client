@@ -1,33 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import styles from "./Card.module.css";
 import EditDescriptionForm from "../../Form/EditDescriptionForm";
 import DeleteToDo from "../../Form/DeleteToDo";
+import { TodoContext } from "../../../context/TodoContext";
 
 const Card = ({ todo }) => {
   const { id, description } = todo;
 
-  const [isChecked, setIsChecked] = useState(false);
-  //const [state, setState] = useState("");
+  const [isChecked, setIsChecked] = useState(true);
+  const [complete, setComplete] = useState(false);
 
-  // add logic to check items that are completed
-  // ex: if(completed) ? checked="checked" : checked=''
+  const { completed, handleCompleted } = useContext(TodoContext);
 
-  /*   const handleCompletion = async () => {
-    toggleHandler();
-
-    const state = isChecked ? "COMPLETE" : "INCOMPLETE";
-
-    try {
-      const response = await axios.patch(`http://localhost:5000/todo/${id}`, {
-        state,
-      });
-
-      console.log(response.data[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  }; */
+  const checkCompleted = () => {
+    completed.map((todo) => {
+      if (todo.id === id) {
+        setComplete(true);
+        handleCompleted();
+        console.log(complete);
+        return complete;
+      }
+      setComplete(false);
+    });
+  };
 
   const handleCompletion = async () => {
     const state = isChecked ? "COMPLETE" : "INCOMPLETE";
@@ -44,18 +40,15 @@ const Card = ({ todo }) => {
   };
 
   const toggleHandler = async () => {
-    setIsChecked((prevState) => {
-      return !prevState;
-    });
+    setIsChecked((prevState) => !prevState);
 
     console.log(isChecked);
     handleCompletion();
   };
 
-  /*     useEffect(() => {
-    console.log(isChecked);
-    handleCompletion();
-  }, [isChecked]); */
+  useEffect(() => {
+    checkCompleted();
+  }, []);
 
   return (
     <article className={styles.cardContainer}>
@@ -65,13 +58,13 @@ const Card = ({ todo }) => {
           name="complete"
           className={styles.checkboxInput}
           onChange={toggleHandler}
+          defaultChecked={complete}
         />
         <span className={styles.descriptionSpan}>{description}</span>
       </div>
       <div className={styles.buttonsPanel}>
-        {/* <button>Edit</button> */}
         <EditDescriptionForm todoId={id} />
-        <span>/</span>
+        <span className={styles.middleBar}>/</span>
         <DeleteToDo todoId={id} />
       </div>
     </article>

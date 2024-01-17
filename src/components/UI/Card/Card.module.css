@@ -4,6 +4,11 @@
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "leftPanel buttonsPanel";
   padding: 1% 1%;
+  margin-bottom: 1%;
+}
+
+.cardContainer:hover {
+  cursor: pointer;
 }
 
 .leftPanel {
@@ -21,6 +26,7 @@
   display: grid;
   grid-template-columns: 50px 10px 50px;
   padding-right: 5%;
+  gap: 5%;
 }
 
 .checkboxInput {
@@ -31,4 +37,9 @@
 .descriptionSpan {
   justify-self: start;
   grid-area: descriptionSpan;
+  padding-top: 6px;
+}
+
+.middleBar {
+  font-size: 25px;
 }

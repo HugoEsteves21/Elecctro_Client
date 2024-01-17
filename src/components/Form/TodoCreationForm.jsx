@@ -17,22 +17,24 @@ const TodoCreationForm = () => {
 
       console.log(response.data[0]);
       setDescription("");
-      // update list of todos
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
+    <section className={styles.sectionContainer}>
+      <form onSubmit={handleSubmit} className={styles.formContainer}>
         <input
           type="text"
           name="description"
           placeholder="Write new task here..."
           onChange={handleDescription}
+          className={styles.createInput}
         />
-        <button type="submit">Create</button>
+        <button type="submit" className={styles.createButton}>
+          Create
+        </button>
       </form>
     </section>
   );

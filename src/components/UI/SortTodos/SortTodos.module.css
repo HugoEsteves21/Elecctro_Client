@@ -1,0 +1,17 @@
+.sortButton {
+  grid-area: sortButton;
+  justify-self: start;
+  padding-left: 5%;
+}
+
+.sortInput {
+  font-size: 15px;
+  padding: 0.5em;
+  border: 0;
+  border-radius: 5px;
+}
+
+.sortInput:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}

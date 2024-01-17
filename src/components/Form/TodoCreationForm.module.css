@@ -1,0 +1,23 @@
+.sectionContainer {
+  padding: 10%;
+}
+
+.createInput {
+  padding: 0.7em;
+  width: 25%;
+  border-radius: 4px;
+  border: 0;
+  background-color: rgb(241, 241, 241);
+}
+
+.createButton {
+  font-size: 15px;
+  margin: 1em;
+  padding: 0.6em;
+  border: 0;
+  border-radius: 5px;
+}
+
+.createButton:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,5 @@
+.filterCheckbox {
+    grid-area: filterCheckbox;
+    justify-self: end;
+    padding-right: 5%;
+  }

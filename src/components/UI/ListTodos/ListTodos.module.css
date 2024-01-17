@@ -1,0 +1,12 @@
+.filterSortContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "sortButton filterCheckbox";
+  padding-top: 2.5%;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}

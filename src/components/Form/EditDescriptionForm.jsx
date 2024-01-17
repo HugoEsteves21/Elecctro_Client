@@ -15,7 +15,7 @@ const EditDescriptionForm = ({ todoId }) => {
           description,
         }
       );
-
+      window.location.reload();
       console.log(response.data[0]);
     } catch (error) {
       console.log(error);
@@ -27,7 +27,11 @@ const EditDescriptionForm = ({ todoId }) => {
   };
 
   return (
-    <Popup trigger={<button>Edit</button>} modal nested>
+    <Popup
+      trigger={<button className={styles.button}>Edit</button>}
+      modal
+      nested
+    >
       {(close) => (
         <div className="modal">
           <input

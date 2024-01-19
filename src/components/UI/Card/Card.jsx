@@ -18,15 +18,18 @@ const Card = ({ todo }) => {
       if (todo.id === id) {
         setComplete(true);
         handleCompleted();
-        console.log(complete);
+
+        console.log(`CHECK COMPLETED: ${complete}`);
         return complete;
       }
-      setComplete(false);
     });
   };
 
   const handleCompletion = async () => {
+    // the problem is here!!!!!!
     const state = isChecked ? "COMPLETE" : "INCOMPLETE";
+
+    console.log(state);
 
     try {
       const response = await axios.patch(`http://localhost:5000/todo/${id}`, {
@@ -41,9 +44,10 @@ const Card = ({ todo }) => {
 
   const toggleHandler = async () => {
     setIsChecked((prevState) => !prevState);
+    setComplete((prevState) => !prevState);
 
-    console.log(isChecked);
     handleCompletion();
+    console.log(`TOGGLE HANDLER: ${isChecked}`);
   };
 
   useEffect(() => {
@@ -55,10 +59,11 @@ const Card = ({ todo }) => {
       <div className={styles.leftPanel}>
         <input
           type="checkbox"
-          name="complete"
+          name={id}
           className={styles.checkboxInput}
           onChange={toggleHandler}
-          defaultChecked={complete}
+          value={complete}
+          checked={complete}
         />
         <span className={styles.descriptionSpan}>{description}</span>
       </div>
